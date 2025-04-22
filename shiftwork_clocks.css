@@ -1,0 +1,220 @@
+/**
+ShiftWork clocks by pfaivre
+
+Small library for displaying multiple analog clocks in a page with shift work highlight
+
+Example of usage:
+
+    <link rel="stylesheet" href="shiftwork_clocks.css">
+
+    <div id="Toronto" class="shiftwork_clock"
+         data-timezone="America/Toronto"
+         data-day-start="9" data-day-end="17">
+    <div id="Paris" class="shiftwork_clock"
+         data-timezone="Europe/Paris"
+         data-day-start="9" data-day-end="17">
+
+    <script src="shiftwork_clocks.js"></script>
+**/
+
+:root {
+    --clock-background-color: 255, 255, 255;
+    --clock-hand-color: 0, 0, 0;
+    --clock-dialline-color: 160, 160, 160;
+    --clock-dialline5-color: 0, 0, 0;
+    --clock-day-color: 245, 245, 245;
+    --clock-night-color: 210, 210, 210;
+    --clock-accent-color: 255, 128, 0;
+}
+
+/**
+ * Dark mode
+ * This is intended to respect operating system settings.
+ * It may interfer with specialized browser extensions like Dark Reader.
+ */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --clock-background-color: 32, 32, 32;
+        --clock-hand-color: 192, 192, 192;
+        --clock-dialline-color: 110, 110, 110;
+        --clock-dialline5-color: 255, 255, 255;
+        --clock-day-color: 60, 60, 60;
+        --clock-night-color: 35, 35, 35;
+    }
+}
+
+.shiftwork_clock {
+    position: relative;
+    width: 216px;
+    height: 216px;
+    border-radius: 50%;
+    padding: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+
+    /* The following lines allo to reduce or increase the size of the clocks */
+    transform: scale(.75);
+    margin: -24px;
+}
+
+.shiftwork_clock .dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 10;
+
+    border-radius: 50%;
+    background-color: rgb(var(--clock-hand-color));
+}
+
+.shiftwork_clock .dot2 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 11;
+
+    border-radius: 50%;
+    background-color: rgb(var(--clock-accent-color));
+}
+
+.shiftwork_clock .dot3 {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 12;
+
+    border-radius: 50%;
+    background-color: rgb(var(--clock-background-color));
+}
+
+.shiftwork_clock .hour-hand, .shiftwork_clock .hour-hand-handle {
+    position: absolute;
+    width: 7px;
+    height: 45px;
+    top: 50px;
+    left: 50%;
+    margin-left: -3px;
+    margin-top: -1px;
+    transform-origin: 50% 59px;
+    z-index: 5;
+
+    border-radius: 32px;
+    background-color: rgba(var(--clock-hand-color), 1);
+}
+
+.shiftwork_clock .hour-hand {
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.shiftwork_clock .hour-hand-handle {
+    margin-left: -1px;
+    width: 3px;
+    height: 60px;
+}
+
+.shiftwork_clock span {
+    display: inline-block;
+    position: absolute;
+    z-index: 4;
+
+    font-size: 18px;
+    font-weight: 700;
+    color: rgb(var(--clock-hand-color));
+}
+
+.shiftwork_clock .h_0 {
+    top: 16px;
+    left: 50%;
+    margin-left: -5.5px;
+}
+
+.shiftwork_clock .h_3 {
+    bottom: 71%;
+    right: 21%;
+}
+
+.shiftwork_clock .h_6 {
+    top: 45%;
+    right: 20px;
+}
+
+.shiftwork_clock .h_9 {
+    top: 71%;
+    right: 21%;
+}
+
+.shiftwork_clock .h_12 {
+    bottom: 16px;
+    left: 46%;
+}
+
+.shiftwork_clock .h_15 {
+    top: 71%;
+    left: 21%;
+}
+
+.shiftwork_clock .h_18 {
+    top: 45%;
+    left: 20px;
+}
+
+.shiftwork_clock .h_21 {
+    bottom: 71%;
+    left: 21%;
+}
+
+.shiftwork_clock .dialline {
+    position: absolute;
+    width: 2px;
+    height: 8px;
+    left: 50%;
+    transform-origin: 50% 100px;
+    z-index: 2;
+
+    border-radius: 8px;
+    background-color: rgb(var(--clock-dialline-color));
+}
+
+.shiftwork_clock .dialline:nth-of-type(3n) {
+    /* height: 10px; */
+
+    background-color: rgb(var(--clock-dialline5-color));
+}
+
+.shiftwork_clock .info {
+    position: absolute;
+    width: 120px;
+    height: 20px;
+    left: 50%;
+    margin-left: -60px;
+    z-index: 3;
+
+    font-weight: 700;
+    text-align: center;
+    line-height: 20px;
+    letter-spacing: 3px;
+    border-radius: 7px;
+    font-size: 24px;
+    background: transparent;
+    color: rgb(var(--clock-dialline-color));
+}
+
+.shiftwork_clock .time {
+    top: 60%;
+
+    transition: top 2s ease;
+}
