@@ -1,0 +1,140 @@
+:root {
+    --ink-color: 0, 0, 0;
+    --page-background-color: 248, 249, 250;
+    --header-background-color: 172, 173, 174;
+    --section-background-color: 255, 255, 255;
+    --button-background-color: 230, 230, 230;
+
+    --header-size: 32px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    color: rgb(var(--ink-color));
+    font-family: system-ui, sans;
+    background-color: rgb(var(--page-background-color));
+}
+
+header {
+    display: flex;
+    background-color: rgb(var(--header-background-color));
+}
+
+header div {
+    margin-left: 8px;
+    line-height: var(--header-size);
+
+    color: white;
+}
+
+.header-logo {
+    height: var(--header-size);
+}
+
+.header-logo img {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-top: 8px;
+}
+
+.header-logo img.front {
+    position: absolute;
+    z-index: 5;
+}
+
+.header-logo img.backdrop-glow {
+    position: relative;
+    z-index: 0;
+
+    filter: blur(8px) saturate(3);
+    opacity: 0.5;
+}
+
+
+#main-content {
+    display: flex;
+    min-height: calc(100vh - var(--header-size));
+    gap: 19px;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.section {
+    flex-grow: 0;
+    padding: 16px;
+    padding-top: 8px;
+    /* min-width: 30%; */
+    flex-basis: 0%;
+
+    background-color: rgb(var(--section-background-color));
+    border-radius: 12px;
+    box-shadow: 0 2px 3px 0 rgba(51, 51, 51, .1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.section.empty {
+    opacity: 0;
+}
+
+h2 {
+    position: relative;
+    margin: 0 0 6px 0;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 34px;
+    text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+    #main-content {
+        gap: 8px;
+    }
+}
+
+
+/**
+ * Dark mode
+ * This is intended to respect operating system settings.
+ * It may interfer with specialized browser extensions like Dark Reader.
+ */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ink-color: 249, 249, 249;
+        --header-background-color: 31, 31, 31;
+        --page-background-color: 34, 35, 34;
+        --section-background-color: 44, 44, 44;
+        --button-background-color: 80, 80, 80;
+    }
+
+    /* body {} */
+
+    .icon img.backdrop-glow {
+        opacity: 0.5;
+    }
+
+    .link-button:hover img.backdrop-glow {
+        opacity: 0.8;
+    }
+}
+
+
+/**
+ * Reduce motion of moving elements
+ * See: https://css-tricks.com/introduction-reduced-motion-media-query/
+ */
+
+@media (prefers-reduced-motion: reduce) {
+    .link-button {
+        transition: transform 0s;
+    }
+}

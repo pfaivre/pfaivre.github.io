@@ -20,7 +20,7 @@ Example of usage:
 :root {
     --clock-background-color: 255, 255, 255;
     --clock-hand-color: 0, 0, 0;
-    --clock-dialline-color: 160, 160, 160;
+    --clock-dialline-color: 120, 120, 120;
     --clock-dialline5-color: 0, 0, 0;
     --clock-day-color: 245, 245, 245;
     --clock-night-color: 210, 210, 210;
@@ -36,7 +36,7 @@ Example of usage:
     :root {
         --clock-background-color: 32, 32, 32;
         --clock-hand-color: 192, 192, 192;
-        --clock-dialline-color: 110, 110, 110;
+        --clock-dialline-color: 128, 128, 128;
         --clock-dialline5-color: 255, 255, 255;
         --clock-day-color: 60, 60, 60;
         --clock-night-color: 35, 35, 35;
