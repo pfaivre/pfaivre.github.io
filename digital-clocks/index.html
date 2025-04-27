@@ -19,49 +19,12 @@
   </header> -->
 
   <div id="main-content">
-    <div class="section">
-      <div id="Toronto" class="digital_clock" data-label="Toronto"
-           data-timezone="America/Toronto">
-      </div>
-    </div>
-
-    <div class="section">
-      <div id="New-York" class="digital_clock" data-label="New-York"
-           data-timezone="America/New_York">
-      </div>
-    </div>
-
-    <div class="section">
-      <div id="London" class="digital_clock" data-label="London"
-           data-timezone="Europe/London">
-      </div>
-    </div>
-
-    <div class="section highlight">
-      <div id="Paris" class="digital_clock" data-label="Paris"
-           data-timezone="Europe/Paris">
-      </div>
-    </div>
-
-    <div class="section">
-      <div id="Nicosia" class="digital_clock" data-label="Nicosia"
-           data-timezone="Europe/Nicosia">
-      </div>
-    </div>
-
-    <div class="section">
-      <div id="Singapore" class="digital_clock" data-label="Singapore"
-           data-timezone="Asia/Singapore">
-      </div>
-    </div>
-
-
-    <div class="section">
-      <div id="Manila" class="digital_clock" data-label="Manila"
-           data-timezone="Asia/Manila">
-      </div>
+    <div id="add_clock_button", class="section">
+      <button class="add_button standard_button" onclick="prompt_new_clock()" title="Add a clock">+</button>
     </div>
   </div>
+
+  <button id="reset_button" class="standard_button" onclick="reset_clocks()" title="Reset to default">↺</button>
 
   <script src="digital_clocks.js"></script>
 </body>

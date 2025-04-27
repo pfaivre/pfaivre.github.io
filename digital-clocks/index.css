@@ -5,6 +5,14 @@
     --clock-background-color: 238, 238, 238;
     --highlight-background-color: 153, 153, 153;
 
+    --button-background-color: 238, 238, 238;
+    --button-hover-background-color: 200, 200, 200;
+    --button-active-background-color: 160, 160, 160;
+
+    --close-button-background-color: 238, 238, 238;
+    --close-button-hover-background-color: 255, 180, 180;
+    --close-button-active-background-color: 255, 64, 64;
+
     --header-size: 32px;
 }
 
@@ -69,6 +77,7 @@ header div {
 }
 
 .section {
+    position: relative;
     flex-grow: 0;
     padding: 8px 20px;
     min-width: 72px;
@@ -95,6 +104,83 @@ header div {
     opacity: 0;
 }
 
+.section .close_button {
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: -3px;
+    right: -3px;
+    border: none;
+
+    opacity: 0;
+    color: rgb(var(--ink-color));
+    border-radius: 50%;
+    background-color: rgb(var(--close-button-background-color));
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.digital_clock {
+    transition: all 0.2s ease-in-out;
+}
+
+.section:hover .digital_clock {
+    transform: translateY(-8px);
+    text-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.section:hover .close_button {
+    opacity: 1;
+}
+
+.section .close_button:hover, .section .close_button:focus {
+    opacity: 1;
+    background-color: rgb(var(--close-button-hover-background-color));
+}
+
+
+.section .close_button:active {
+    opacity: 1;
+    background-color: rgb(var(--close-button-active-background-color));
+}
+
+.section:has(> .add_button) {
+    padding: 0;
+}
+
+.standard_button {
+    border: none;
+    color: rgb(var(--ink-color));
+    background-color: rgb(var(--button-background-color));
+    text-align: center;
+    font-size: 2em;
+}
+
+.standard_button:hover, .standard_button:focus {
+    background-color: rgb(var(--button-hover-background-color));
+}
+
+.standard_button:active {
+    background-color: rgb(var(--button-active-background-color));
+}
+
+.add_button {
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+#reset_button {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+
+    font-size: 1.5em;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
 
 @media screen and (max-width: 900px) {
     #main-content {
@@ -116,6 +202,14 @@ header div {
         --page-background-color: 34, 35, 34;
         --clock-background-color: 48, 48, 48;
         --highlight-background-color: 96, 96, 96;
+
+        --button-background-color: 48, 48, 48;
+        --button-hover-background-color: 96, 96, 96;
+        --button-active-background-color: 48, 48, 48;
+
+        --close-button-background-color: 192, 48, 48;
+        --close-button-hover-background-color: 255, 140, 140;
+        --close-button-active-background-color: 160, 32, 32;
     }
 
     /* body {} */
