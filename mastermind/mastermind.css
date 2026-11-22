@@ -1,0 +1,150 @@
+/* Mastermind specific styles */
+
+#main-content {
+    justify-content: center;
+    align-items: center;
+}
+
+#game-section {
+    flex-grow: 0;
+    flex-basis: auto;
+    width: 100%;
+    max-width: 340px;
+    min-width: 0;
+    text-align: center;
+}
+
+.info-label {
+    margin: 8px 0 4px;
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+#input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    border: 2px solid rgba(var(--ink-color), 0.2);
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgb(var(--ink-color));
+    background-color: rgba(var(--ink-color), 0.04);
+    resize: vertical;
+}
+
+#input:focus {
+    outline: none;
+    border-color: rgb(var(--ink-color));
+}
+
+#solutions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 240px;
+    margin-top: 4px;
+    padding: 4px;
+    overflow-y: auto;
+    border-radius: 8px;
+    background-color: rgba(var(--ink-color), 0.04);
+}
+
+.solution-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.solution-row.best {
+    background-color: rgba(var(--ink-color), 0.1);
+    font-weight: 700;
+}
+
+.solution-tag {
+    width: 34px;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: right;
+    opacity: 0.7;
+}
+
+.worst-badge {
+    min-width: 3ch;
+    font-size: 10px;
+    text-align: left;
+    opacity: 0.55;
+}
+
+#status {
+    min-height: 20px;
+    margin: 10px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#keypad {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+#color-keys,
+#digit-keys {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.color-key {
+    width: 42px;
+    height: 42px;
+    border: 2px solid rgba(var(--ink-color), 0.25);
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.color-key:active {
+    transform: scale(0.9);
+}
+
+.digit-key {
+    min-width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(var(--ink-color));
+    background-color: rgb(var(--button-background-color));
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.digit-key:active {
+    background-color: rgba(var(--button-background-color), 0.65);
+}
+
+@media screen and (max-width: 480px) {
+    #game-section {
+        max-width: none;
+    }
+
+    #solutions {
+        max-height: 180px;
+    }
+}

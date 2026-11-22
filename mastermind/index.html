@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr_FR">
+
+<head>
+  <title>Mastermind</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="../images/favicon.png" type="image/png">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="mastermind.css">
+</head>
+
+<body>
+  <header>
+    <div class="header-logo">
+      <img class="front" src="../images/favicon.png" />
+      <img class="backdrop-glow" src="../images/favicon.png" />
+    </div>
+    <div>Mastermind</div>
+  </header>
+
+  <div id="main-content">
+    <div class="section" id="game-section">
+      <h2 class="title">Mastermind</h2>
+
+      <div class="info-label">Enter your tries, one per line: 4 letters (A–F) followed by correct pegs and badly placed pegs</div>
+      <textarea id="input" rows="8" spellcheck="false" placeholder="ABCD12&#10;EEFF01"></textarea>
+
+      <div id="keypad">
+        <div id="color-keys"></div>
+        <div id="digit-keys"></div>
+      </div>
+
+      <div id="status"></div>
+      <div id="solutions-label" class="info-label"></div>
+      <div id="solutions"></div>
+    </div>
+  </div>
+
+  <script src="mastermind.js"></script>
+</body>
+
+</html>
