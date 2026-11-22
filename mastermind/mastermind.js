@@ -150,7 +150,6 @@ function insert_text(text) {
     var end = input.selectionEnd;
     input.value = input.value.slice(0, start) + text + input.value.slice(end);
     input.selectionStart = input.selectionEnd = start + text.length;
-    input.focus();
     render();
 }
 
@@ -165,7 +164,6 @@ function keypad_backspace() {
         start--;
     }
     input.selectionStart = input.selectionEnd = start;
-    input.focus();
     render();
 }
 

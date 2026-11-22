@@ -61,6 +61,8 @@ header div {
 #main-content {
     display: flex;
     min-height: calc(100vh - var(--header-size));
+    /* dvh avoids the mobile URL bar cutting into the viewport height */
+    min-height: calc(100dvh - var(--header-size));
     gap: 19px;
     flex-wrap: wrap;
     align-content: center;
@@ -180,6 +182,36 @@ h2 {
 @media screen and (max-width: 800px) {
     #main-content {
         gap: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #main-content {
+        padding: 10px;
+        /* let tall content start at the top so the page scrolls naturally
+           instead of being clipped by flex centering */
+        align-content: flex-start;
+    }
+
+    .section {
+        min-width: 0;
+        flex-basis: 100%;
+        padding: 12px;
+        padding-top: 8px;
+    }
+}
+
+/* Touch devices have no hover: avoid the sticky zoom effect after a tap */
+@media (hover: none) {
+    .link-button:hover {
+        transform: none;
+        box-shadow: none;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    .link-button:hover img.backdrop-glow {
+        opacity: 0.15;
     }
 }
 
