@@ -268,7 +268,18 @@ function render() {
 }
 
 if (typeof document !== 'undefined') {
-    document.getElementById('input').addEventListener('input', render);
+    var input = document.getElementById('input');
+    // On touch devices the on-screen keypad is the input method, so the
+    // textarea never needs to be editable: read-only prevents iOS from
+    // showing the software keyboard when it gets focused. Keypad edits
+    // assign .value directly, which still works on a read-only textarea.
+    if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
+        input.readOnly = true;
+    }
+    input.addEventListener('touchstart', function() {
+        input.readOnly = true;
+    }, { once: true, passive: true });
+    input.addEventListener('input', render);
     build_keypad();
     render();
 }
