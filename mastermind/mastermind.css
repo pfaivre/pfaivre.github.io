@@ -41,6 +41,21 @@
     border-color: rgb(var(--ink-color));
 }
 
+/* #results only exists so the mobile layout can place the results next to
+   the input; on desktop it must not affect the layout. */
+#results {
+    display: contents;
+}
+
+/* iOS Safari zooms the page in on rapid double-taps (e.g. fast keypad
+   input). manipulation keeps scrolling and pinch-zoom but disables the
+   double-tap zoom. */
+body,
+#keypad,
+#input {
+    touch-action: manipulation;
+}
+
 #solutions {
     display: flex;
     flex-direction: column;
@@ -140,11 +155,63 @@
 }
 
 @media screen and (max-width: 480px) {
+    /* Definite height so the section can fill the viewport and the keypad
+       can sit at the bottom (dvh accounts for the mobile URL bar) */
+    #main-content {
+        height: calc(100vh - var(--header-size));
+        height: calc(100dvh - var(--header-size));
+    }
+
     #game-section {
         max-width: none;
+        /* definite height (against the fixed #main-content height above) so
+           the 1fr grid row is constrained and the keypad row sits at the
+           bottom; without it the solutions list grows and the page scrolls */
+        height: 100%;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-rows: auto auto minmax(0, 1fr) auto;
+        grid-template-areas:
+            "title  title"
+            "hint   hint"
+            "input  results"
+            "keypad keypad";
+        gap: 8px;
+    }
+
+    #game-section .title {
+        grid-area: title;
+    }
+
+    #game-section > .info-label {
+        grid-area: hint;
+        margin: 0;
+    }
+
+    #input {
+        grid-area: input;
+        height: 100%;
+        min-height: 0;
+        resize: none;
+    }
+
+    #results {
+        grid-area: results;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 0;
+        min-height: 0;
     }
 
     #solutions {
-        max-height: 180px;
+        flex: 1 1 auto;
+        min-height: 0;
+        max-height: none;
+    }
+
+    #keypad {
+        grid-area: keypad;
+        margin-top: 0;
     }
 }
